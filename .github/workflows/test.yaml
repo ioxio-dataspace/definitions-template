@@ -33,14 +33,15 @@ jobs:
           git status
 
           if [[ -z $(git status -s) ]]; then
+            echo "No changes detected"
+          else
+            set -x
             git config --local user.name "${BOT_NAME}"
             git config --local user.email "${BOT_EMAIL}"
             git add .
             git commit -m "Convert definitions" -a
 
             git push https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH}
-          else
-            echo "No changes detected"
           fi
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
