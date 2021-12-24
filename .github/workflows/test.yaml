@@ -32,7 +32,7 @@ jobs:
         run: |
           git status
 
-          if [ -z $(git status -s) ]; then
+          if [[ -z $(git status -s) ]]; then
             git config --local user.name "${BOT_NAME}"
             git config --local user.email "${BOT_EMAIL}"
             git add .
