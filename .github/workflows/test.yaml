@@ -8,26 +8,11 @@ on:
     types: [opened, synchronize, edited]
 
 jobs:
-  RunTests:
-    name: Run tests
+  Convert:
+    name: Convert definitions
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Commit and push
-        run: |
-          echo "test" > test.txt
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add .
-          git commit -m "Convert standards" -a
-
-          set +x
-          env
-          git push https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH}
-        env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: ${{ github.ref }}
 
       # - name: Set up Python 🐍
       #   uses: actions/setup-python@v1
@@ -39,3 +24,25 @@ jobs:
 
       # - name: Generate definitions
       #   run: converter src DataProducts
+
+      - name: test
+        run: date > data.txt
+
+      - name: Check if requires a push
+        run: [[-z $(git status -s)]]
+        continue-on-error: true
+
+      - name: Commit and push
+        if: ${{ failure() }}
+        run: |
+          git config --local user.name "${BOT_NAME}"
+          git config --local user.email "${BOT_EMAIL}"
+          git add .
+          git commit -m "Convert definitions" -a
+
+          git push https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH}
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ github.ref }}
+          BOT_NAME: github-actions[bot]
+          BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
