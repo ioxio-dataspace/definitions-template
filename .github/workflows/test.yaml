@@ -36,7 +36,7 @@ jobs:
             #git add .
             # format files if necessary
             #pre-commit run --all-files || echo
-            
+
             git pull
             git add .
             # run validation one more time. this time exit on error
