@@ -29,7 +29,7 @@ jobs:
         run: date > data.txt
 
       - name: Check if requires a push
-        run: [[-z $(git status -s)]]
+        run: "[[-z $(git status -s)]]"
         continue-on-error: true
 
       - name: Commit and push
