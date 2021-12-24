@@ -14,13 +14,27 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python 🐍
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.9
+      - name: Commit and push
+        run: |
+          echo "test" > test.txt
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "Convert standards" -a
 
-      - name: Install python dependencies
-        run: pip install data-product-definition-tooling
+          set +x
+          env
+          git push https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH}
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ github.ref }}
 
-      - name: Generate definitions
-        run: converter src DataProducts
+      # - name: Set up Python 🐍
+      #   uses: actions/setup-python@v1
+      #   with:
+      #     python-version: 3.9
+
+      # - name: Install python dependencies
+      #   run: pip install data-product-definition-tooling
+
+      # - name: Generate definitions
+      #   run: converter src DataProducts
