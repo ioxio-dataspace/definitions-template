@@ -28,19 +28,20 @@ jobs:
       - name: test
         run: date > data.txt
 
-      - name: Check if requires a push
-        run: "[[-z $(git status -s)]]"
-        continue-on-error: true
-
       - name: Commit and push
-        if: ${{ failure() }}
         run: |
-          git config --local user.name "${BOT_NAME}"
-          git config --local user.email "${BOT_EMAIL}"
-          git add .
-          git commit -m "Convert definitions" -a
+          git status
 
-          git push https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH}
+          if [ -z $(git status -s) ]; then
+            git config --local user.name "${BOT_NAME}"
+            git config --local user.email "${BOT_EMAIL}"
+            git add .
+            git commit -m "Convert definitions" -a
+
+            git push https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH}
+          else
+            echo "No changes detected"
+          fi
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: ${{ github.ref }}
