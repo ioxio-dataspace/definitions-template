@@ -37,7 +37,7 @@ jobs:
             # format files if necessary
             #pre-commit run --all-files || echo
 
-            git pull
+            git pull origin "${BRANCH}"
             git add .
             # run validation one more time. this time exit on error
             #pre-commit run --all-files
