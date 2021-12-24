@@ -46,6 +46,6 @@ jobs:
           fi
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: ${{ github.base_ref }}
+          BRANCH: ${{ github.head_ref }}
           BOT_NAME: github-actions[bot]
           BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
