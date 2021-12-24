@@ -1,4 +1,4 @@
-name: Test definitions
+name: Convert and validate definitions
 
 on:
   pull_request:
@@ -16,11 +16,11 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Install python dependencies
-        run: pip install pre-commit data-product-definition-tooling
+      # - name: Install python dependencies
+      #   run: pip install pre-commit data-product-definition-tooling
 
       - name: Generate definitions
-        run: converter src DataProducts
+        run: date > REMOVE_ME.txt
 
       - name: Commit and push
         run: |
@@ -33,13 +33,14 @@ jobs:
             git config --local user.name "${BOT_NAME}"
             git config --local user.email "${BOT_EMAIL}"
 
-            git add .
+            #git add .
             # format files if necessary
-            pre-commit run --all-files || echo
-
+            #pre-commit run --all-files || echo
+            
+            git pull
             git add .
             # run validation one more time. this time exit on error
-            pre-commit run --all-files
+            #pre-commit run --all-files
 
             git commit -m "Convert definitions" -a
             git push https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH}
@@ -49,3 +50,6 @@ jobs:
           BRANCH: ${{ github.head_ref }}
           BOT_NAME: github-actions[bot]
           BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Run validation
+        run: pre-commit run --all-files
