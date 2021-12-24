@@ -1,8 +1,9 @@
 name: Test definitions
 
 on:
-  pull_request:
-    types: [opened, synchronize, edited]
+  push:
+  # pull_request:
+  #   types: [opened, synchronize, edited]
 
 jobs:
   Convert:
