@@ -14,19 +14,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # - name: Set up Python 🐍
-      #   uses: actions/setup-python@v1
-      #   with:
-      #     python-version: 3.9
+      - name: Set up Python 🐍
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
 
-      # - name: Install python dependencies
-      #   run: pip install data-product-definition-tooling
+      - name: Install python dependencies
+        run: pip install data-product-definition-tooling
 
-      # - name: Generate definitions
-      #   run: converter src DataProducts
-
-      - name: test
-        run: date > data.txt
+      - name: Generate definitions
+        run: converter src DataProducts
 
       - name: Commit and push
         run: |
@@ -36,9 +33,12 @@ jobs:
             echo "No changes detected"
           else
             set -x
+
             git config --local user.name "${BOT_NAME}"
             git config --local user.email "${BOT_EMAIL}"
+
             git add .
+            pre-commit || echo
             git commit -m "Convert definitions" -a
 
             git push https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH}
@@ -48,3 +48,47 @@ jobs:
           BRANCH: ${{ github.ref }}
           BOT_NAME: github-actions[bot]
           BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+Test:
+  name: Test definitions
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 🐍
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+
+    - name: Install python dependencies
+      run: pip install pre-commit
+
+    - name: Generate definitions
+      run: converter src DataProducts
+
+    - name: Commit and push
+      run: |
+        git status
+
+        if [[ -z $(git status -s) ]]; then
+          echo "No changes detected"
+        else
+          set -x
+          git config --local user.name "${BOT_NAME}"
+          git config --local user.email "${BOT_EMAIL}"
+
+          git add .
+          # format files if necessary
+          pre-commit run --all-files || echo
+
+          git add .
+          # run validation one more time if necessary. exit on error
+          pre-commit run --all-files
+
+          git commit -m "Convert definitions" -a
+          git push https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH}
+        fi
+      env:
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: ${{ github.ref }}
+        BOT_NAME: github-actions[bot]
+        BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
