@@ -85,14 +85,11 @@
     "schemas": {
       "CurrentAirQualityRequest": {
         "title": "CurrentAirQualityRequest",
-        "required": [
-          "lat",
-          "lon"
-        ],
+        "required": ["lat", "lon"],
         "type": "object",
         "properties": {
           "lat": {
-            "title": "Latitude",
+            "title": "Latitude!",
             "maximum": 90.0,
             "minimum": -90.0,
             "type": "number",
@@ -111,11 +108,7 @@
       },
       "CurrentAirQualityResponse": {
         "title": "CurrentAirQualityResponse",
-        "required": [
-          "airQualityIndex",
-          "timestamp",
-          "attribution"
-        ],
+        "required": ["airQualityIndex", "timestamp", "attribution"],
         "type": "object",
         "properties": {
           "airQualityIndex": {
@@ -138,9 +131,7 @@
               "type": "string"
             },
             "description": "List of text to show required credits to data sources",
-            "example": [
-              "Moscow State environmental monitoring"
-            ]
+            "example": ["Moscow State environmental monitoring"]
           }
         }
       },
@@ -159,11 +150,7 @@
       },
       "ValidationError": {
         "title": "ValidationError",
-        "required": [
-          "loc",
-          "msg",
-          "type"
-        ],
+        "required": ["loc", "msg", "type"],
         "type": "object",
         "properties": {
           "loc": {
