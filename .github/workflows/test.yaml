@@ -53,5 +53,6 @@ jobs:
           BOT_NAME: github-actions[bot]
           BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
 
+      # run validation if previous step was skipped
       - name: Run validation
         run: pre-commit run --all-files

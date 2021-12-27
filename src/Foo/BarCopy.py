@@ -7,7 +7,7 @@ from pydantic import Field
 class CurrentAirQualityRequest(CamelCaseModel):
     lat: float = Field(
         ...,
-        title="Latitude",
+        title="Latitude!",
         description="The latitude coordinate of the desired location",
         example=60.192059,
         ge=-90,
