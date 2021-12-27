@@ -19,6 +19,9 @@ jobs:
       - name: Install python dependencies
         run: pip install pre-commit data-product-definition-tooling
 
+      - name: Generate definitions
+        run: converter src DataProducts
+
       - name: Commit and push
         run: |
           git status
