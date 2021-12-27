@@ -16,11 +16,8 @@ jobs:
         with:
           python-version: 3.9
 
-      # - name: Install python dependencies
-      #   run: pip install pre-commit data-product-definition-tooling
-
-      - name: Generate definitions
-        run: date > REMOVE_ME.txt
+      - name: Install python dependencies
+        run: pip install pre-commit data-product-definition-tooling
 
       - name: Commit and push
         run: |
@@ -33,16 +30,16 @@ jobs:
             git config --local user.name "${BOT_NAME}"
             git config --local user.email "${BOT_EMAIL}"
 
-            #git add .
-            # format files if necessary
-            #pre-commit run --all-files || echo
-
             git fetch --depth=1
             git checkout "${BRANCH}"
-            #git pull origin "${BRANCH}"
+            
+            git add .
+            # format files if necessary
+            pre-commit run --all-files || echo
+            
             git add .
             # run validation one more time. this time exit on error
-            #pre-commit run --all-files
+            pre-commit run --all-files
 
             git commit -m "Convert definitions" -a
             git push https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${BRANCH}
