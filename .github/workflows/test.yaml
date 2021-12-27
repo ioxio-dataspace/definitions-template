@@ -35,11 +35,11 @@ jobs:
 
             git fetch --depth=1
             git checkout "${BRANCH}"
-            
+
             git add .
             # format files if necessary
             pre-commit run --all-files || echo
-            
+
             git add .
             # run validation one more time. this time exit on error
             pre-commit run --all-files
