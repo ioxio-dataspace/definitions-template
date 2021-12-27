@@ -51,6 +51,9 @@ class CurrentAirQualityResponse(CamelCaseModel):
 
 
 DEFINITION = DataProductDefinition(
+    description="Data Product for current air quality index",
     request=CurrentAirQualityRequest,
     response=CurrentAirQualityResponse,
+    route_description="Current air quality",
+    summary="Air Quality Index",
 )
