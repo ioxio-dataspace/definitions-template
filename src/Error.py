@@ -51,4 +51,6 @@ class CurrentAirQualityResponse(CamelCaseModel):
 
 
 DEFINITION = DataProductDefinition(
+    request=CurrentAirQualityRequest,
+    response=CurrentAirQualityResponse,
 )
