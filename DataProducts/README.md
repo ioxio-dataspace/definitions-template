@@ -231,7 +231,7 @@ _Rules below are applied for each definition._
 ```json
 {
   "paths": {
-    "/Grafiikka/Väri": { "post": {} },
+    "/Grafiikka/Väri": { "post": {} }
   }
 }
 ```
@@ -241,7 +241,7 @@ _Rules below are applied for each definition._
 ```json
 {
   "paths": {
-    "/Graphics/Colour": { "post": {} },
+    "/Graphics/Colour": { "post": {} }
   }
 }
 ```
@@ -251,7 +251,7 @@ _Rules below are applied for each definition._
 ```json
 {
   "paths": {
-    "/Graphics/Color": { "post": {} },
+    "/Graphics/Color": { "post": {} }
   }
 }
 ```

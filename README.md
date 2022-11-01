@@ -15,7 +15,8 @@ with defining your own Data Product Definitions.
 Press `Use this template` to create a new repo from this template and define your data
 products there.
 
-Please check the [Contribution guidelines](./CONTRIBUTING.md) to learn how to submit new data product definitions in this repo.
+Please check the [Contribution guidelines](./CONTRIBUTING.md) to learn how to submit new
+data product definitions in this repo.
 
 ## Python sources
 
