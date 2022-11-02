@@ -29,13 +29,13 @@ format, but it's still better to get through the definition guidelines.
 
 ## Definitions format
 
-The most complete set of rules with the examples can be found in the
+The most complete set of rules with examples can be found in the
 [DataProducts](./DataProducts/README.md) directory. Except of that, please make sure to
 meet the following criterias:
 
 1. Use American English for describing data
 2. Each definition file must define only one POST endpoint
-3. Each definition file must include a schema for successful response
+3. Each definition file must include a schema for a successful response
 4. Each definition file must include a schema for the request body
 5. Each definition file must not define any severs or security sections
 
@@ -51,19 +51,19 @@ For example, to add a definition for `Foo/Bar`:
 - make sure you follow the data product definition
   [guidelines](./DataProducts/README.md)
 
-### Definition as python file
+### Definition as a Python file
 
-If you're familiar with python and [pydantic](https://github.com/samuelcolvin/pydantic)
+If you're familiar with Python and [pydantic](https://github.com/samuelcolvin/pydantic)
 library, you may find it easier to create the definition as a set of pydantic models.
 
 For example, to add a definition for `Foo/Bar`:
 
-- create `DataProducts/<version>/Foo/Bar.py`
+- create `src/<version>/Foo/Bar.py`
 
 You have 2 options to use the converter:
 
 1. By running `pre-commit install` after cloning the repo. Then definitions will be
-   converted automatically before each commit
+   converted automatically before each commit.
 2. By creating a PR to the `master` branch. CI workflow will run the automation and push
    updated/generated files if needed.
 
