@@ -1,4 +1,4 @@
-# Contributing to Finnish Data Economy Testbed Definitions
+# Contributing to Data Product Definitions
 
 A big welcome and thank you for considering contributing to this project!
 
@@ -10,7 +10,7 @@ you finalize your pull requests.
 
 ## Quicklinks
 
-- [Contributing to Finnish Data Economy Testbed Definitions](#contributing-to-finnish-data-economy-testbed-definitions)
+- [Contributing to Data Product Definitions](#contributing-to-data-product-definitions)
   - [Quicklinks](#quicklinks)
   - [Getting Started](#getting-started)
   - [Definitions format](#definitions-format)
@@ -25,7 +25,7 @@ you finalize your pull requests.
 
 New definitions should be submitted as a pull request to this repository. We try our
 best to provide an automated validation of the most common mistakes in the definitions
-format, but it's still better to get thought the definition guidelines.
+format, but it's still better to get through the definition guidelines.
 
 ## Definitions format
 
@@ -70,15 +70,15 @@ You have 2 options to use the converter:
 ### Test version of definitions
 
 Everyone can submit to this repo whatever definitions they seem appropriate. It will
-allow to create data products using these definitions in the Finnish data economy
-testbed nexus and experiment with the system. In order to do this:
+allow to create data products using these definitions in a dataspace and experiment with
+the system. In order to do this:
 
 1. Fork this repository
 2. Create your definitions under `src/test/<your_github_username>/` if you're familiar
    with Python approach, or directly under `DataProducts/test/<your_github_username>` if
    you know what you're doing
 3. Submit a PR and wait for CI Workflow to run and validate the changes
-4. Once PR is merged, it's possible to use the definitions in the nexus
+4. Once PR is merged, it's possible to use the definitions in the dataspace
 
 ## Pull Requests
 
