@@ -16,7 +16,7 @@ you finalize your pull requests.
   - [Definitions format](#definitions-format)
   - [Adding new Data Product Definition](#adding-new-data-product-definition)
     - [Raw OpenApi spec](#raw-openapi-spec)
-    - [Definition as python file](#definition-as-python-file)
+    - [Definition as a Python file](#definition-as-a-python-file)
     - [Test version of definitions](#test-version-of-definitions)
   - [Pull Requests](#pull-requests)
   - [License](#license)
@@ -25,7 +25,7 @@ you finalize your pull requests.
 
 New definitions should be submitted as a pull request to this repository. We try our
 best to provide an automated validation of the most common mistakes in the definitions
-format, but it's still better to get through the definition guidelines.
+format, but it's still better to go through the definition guidelines.
 
 ## Definitions format
 
