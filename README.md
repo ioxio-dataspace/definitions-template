@@ -74,7 +74,7 @@ DataProductDefinition is a structure consisting of:
 
 - `title`
 
-  Title used in top of OpenAPI spec and a summary for the POST route
+  Title used in the info block of OpenAPI spec and the summary for the POST route
 
 - `description`
 
