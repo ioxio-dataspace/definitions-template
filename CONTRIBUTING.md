@@ -74,9 +74,9 @@ the system. In order to do this:
 
 #### Test definitions
 
-Definitions in `src/test/<your_github_username>/` should have no version number in the
-filename and the version in the file needs to be of the form `0.0.x`. Each change to the
-definition should increment the version by one. Examples of `version` -> `filename`:
+Definitions in `src/test/<your_github_username>/` should not have any version number in
+the filename and the version in the file needs to be of the form `0.0.x`. Each change to
+the definition should increment the version by one. Examples of `version` -> `filename`:
 
 - `0.0.1` -> `src/test/<your_github_username>/Foo/Bar.py`
 - `0.0.2` -> `src/test/<your_github_username>/Foo/Bar.py`
