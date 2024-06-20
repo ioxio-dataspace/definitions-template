@@ -123,7 +123,8 @@ DataProductDefinition is a structure consisting of:
 
 - `tags`
 
-  A list (or other iterable) of strings to use as tags for the POST route
+  A list (or other iterable) of strings to use as tags for the POST route. The tags
+  should be in `Title Case`.
 
 ### Example
 
@@ -179,7 +180,7 @@ DEFINITION = DataProductDefinition(
     description="Current weather in a given location with metric units",
     request=CurrentWeatherMetricRequest,
     response=CurrentWeatherMetricResponse,
-    tags=["weather"],
+    tags=["Weather"],
 )
 ```
 
