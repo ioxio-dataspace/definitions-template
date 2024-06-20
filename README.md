@@ -60,6 +60,7 @@ DEFINITION = DataProductDefinition(
         418: Error418,
     },
     deprecated=False,
+    tags=["foo"],
 )
 
 ```
@@ -120,6 +121,10 @@ DataProductDefinition is a structure consisting of:
 
   Marks the route as deprecated
 
+- `tags`
+
+  A list (or other iterable) of strings to use as tags for the POST route
+
 ### Example
 
 There's an example of Data Product Definition for current weather:
@@ -174,6 +179,7 @@ DEFINITION = DataProductDefinition(
     description="Current weather in a given location with metric units",
     request=CurrentWeatherMetricRequest,
     response=CurrentWeatherMetricResponse,
+    tags=["weather"],
 )
 ```
 
