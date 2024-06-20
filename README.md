@@ -60,7 +60,7 @@ DEFINITION = DataProductDefinition(
         418: Error418,
     },
     deprecated=False,
-    tags=["foo"],
+    tags=["Foo"],
 )
 
 ```
